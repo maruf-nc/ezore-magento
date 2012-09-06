@@ -1,0 +1,173 @@
+/**
+  * Rhinoslider 1.04
+  * http://rhinoslider.com/
+  *
+  * Copyright 2012: Sebastian Pontow, Rene Maas (http://renemaas.de/)
+  * Dual licensed under the MIT or GPL Version 2 licenses.
+  * http://rhinoslider.com/license/
+  */
+.rhino-btn {
+	background:url(../images/img/rhinoslider-sprite.png) 0 0 no-repeat;
+	z-index:10;
+	width:56px;
+	height:53px;
+	display:block;
+	text-indent:-999%;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	user-select:none;
+}
+
+.rhino-prev, .rhino-next { 
+	background: url(../images/img/bkg_control.png) top left no-repeat;
+	width: 39px;
+	height: 33px;
+	bottom: -6px;
+	position: absolute;
+}
+
+.rhino-prev {
+	left: 24px;
+	background-position: top left;
+}
+
+.rhino-prev:hover {
+	background-position: bottom left;
+} 
+
+.rhino-next {
+	left: 63px;
+	background-position: top right;
+}
+
+.rhino-next:hover {
+	background-position: bottom right;	
+}
+
+.rhino-toggle {
+	top:-4px;
+	left:-6px;
+}
+
+.rhino-play { background-position:0 0; }
+
+.rhino-play:hover { background-position:0 -53px; }
+
+.rhino-pause { background-position:-56px 0; }
+
+.rhino-pause:hover { background-position:-56px -53px; }
+
+.rhino-container { position:relative; }
+
+.rhino-caption {
+	position:absolute;
+	background: #000;
+	display: none;
+	left:0;
+	right:0;
+	bottom: 40px;
+	color:#fff;
+	padding:30px 30px 20px;
+	text-align: left;
+
+}
+
+.rhino-caption .product-name {
+	line-height: 1;
+	margin-bottom: 17px;
+}
+
+.rhino-caption .product-name a {
+	font-size: 18px;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.rhino-caption .product-name a:hover {
+	color: #02A6D5;
+}
+
+.rhino-caption .desc {
+	color: #cecece;
+	line-height: 20px;
+	margin-bottom: 15px;
+}
+
+.rhino-caption .desc a {
+	color: #ed1c24;
+	text-decoration: none;
+}
+
+.rhino-caption .price-box {
+	margin: 0;
+	line-height: 1;	
+}
+
+.rhino-caption .price-box .price {
+	margin: 0;
+	color: #ed1c24;
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 1;
+}
+
+.rhino-caption .price-box .old-price .price {
+	color: #999;
+}
+
+.rhino-bullets {
+	position: absolute;
+	bottom: 10px;
+	left: 112px;
+	margin: 0;
+	z-index: 10;
+	padding:0;
+}
+
+.rhino-bullets li {
+	float:left;
+	display:inline;
+	margin:0 2px;
+}
+
+.rhino-bullets li a.rhino-bullet {
+	display: block;
+	width: 6px;
+	height: 6px;
+	cursor: pointer;
+	background: url(../images/img/bkg_bullets.png) top center no-repeat;
+	text-indent: -9999em;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	user-select:none;
+}
+
+.rhino-bullets li a.rhino-bullet.rhino-active-bullet,
+.rhino-bullets li a.rhino-bullet:hover {
+	background-position: bottom center;
+}
+.myslideshow  {
+	width:900px;
+	height:370px;
+	overflow: hidden;
+				
+				/*IE bugfix*/
+	padding:0;
+	margin:0;
+}
+
+.slideshow-wrapper {
+	background: url(../images/img/shadow.png) bottom center no-repeat;
+	padding-bottom: 6px;
+}
+
+.slideshow-inner {
+	padding: 20px;
+	border: 1px solid #e7e7e7;
+	background: #fff;
+}
+
+			

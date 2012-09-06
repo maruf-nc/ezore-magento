@@ -1,0 +1,93 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+	$r = rand().rand().time();
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="slideshow-wrapper">
+<div class="slideshow-inner">
+    <?php // List mode ?>
+    <?php $_iterator = 0; ?>
+    <ol id="myslideshow<?php echo $r; ?>" class="myslideshow">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li>
+            <?php // Product Image ?>
+            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(900,370); ?>" width="900" height="370" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'thumbnail'), null, true) ?>" />
+            <?php // Product description ?>
+            <div class="rhino-caption">
+                
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+					
+					<?php echo $this->getPriceHtml($_product, true) ?>
+              
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+	
+	<?php if(!defined('GT_ADD_RHINO')){;?>
+		<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/rhinoslider-1.05.min.js') ?>"></script> 
+		<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/mousewheel.js') ?>"></script> 
+		<?php  define('GT_ADD_RHINO', true); ?>
+	<?php }?>
+	
+	<script type="text/javascript"> 
+		jQuery(document).ready(function() {
+			jQuery('#myslideshow<?php echo $r; ?>').rhinoslider({
+				effect: 'fade',
+				controlsPlayPause: false,
+				showTime: 6000,
+				autoPlay: true,
+				showCaptions: 'allway',
+				pauseOnHover: false,
+				captionsOpacity: 0.8,
+				showBullets: 'always',
+				showControls: 'always'
+			});
+		});
+	</script> 
+
+</div>
+</div>
+<?php endif; ?>
